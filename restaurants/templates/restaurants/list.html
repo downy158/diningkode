@@ -1,0 +1,76 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>DiningKode</title>
+    <meta name="description" content="DiningKode">
+    <meta name="author" content="You!">
+
+    <style>
+        html, body, div, form, fieldset, legend, label {
+         margin: 0;
+         padding: 0; 
+        }
+        header {
+            height: 50px;
+            background-color: red;
+        }
+        header div {
+            text-align: center;
+            padding-top: 15px;
+        }
+        header div a {
+            color: white;
+        }
+        main {
+            width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+        section {
+            border-bottom: 3px solid black;
+        }
+        li {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+    <div>
+        <a href="/">Home</a>
+
+    </div>
+    </header>
+    <main>
+        <ul>
+            <li><a href="/rating/5">Restaurants rated 5</a></li>
+            <li><a href="/rating/4">Restaurants rated 4 or greater</a></li>
+            <li><a href="/rating/3">Restaurants rated 3 or greater</a></li>
+        </ul>
+        <ul>
+            {% for resto in restaurants %}
+                <li>
+                    <section>
+                            <a href="/{{resto.name}}">
+                                <img src="{{ resto.image }}" alt="" width="300">
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="/{{resto.name}}">{{resto.name}}</a>
+                                </li>
+                                <li>rating: {{ resto.rating }}</li>
+                                <li>phone: {{ resto.phone }}</li>
+                                <li>address: {{ resto.address }}</li>
+                            </ul>
+                    </section>
+                </li>
+            {% endfor %}
+        </ul>
+
+    </main>
+</body>
+</html>
